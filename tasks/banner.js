@@ -26,12 +26,16 @@ module.exports = function(grunt) {
         // Iterate over the list of files and add the banner or footer
         this.files.forEach( function( file ) {
             file.src.forEach( function( src ) {
-                console.log( options.banner );
+
                 grunt.file.write( src,
                     options.position === 'top' ? options.banner + '\n' + grunt.file.read( src ) : grunt.file.read( src ) + '\n' + options.banner
                 );
+
+                grunt.log.writeln( 'Banner added to file ' + src.cyan );
             });
         });
+
+        grunt.log.writeln( '✔'.magenta + ' grunt-banner completed successfully' );
 
     });
 
