@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
-    grunt.registerMultiTask('banner', 'Adds a banner or a footer to a file', function() {
+    grunt.registerMultiTask('usebanner', 'Adds a banner or a footer to a file', function() {
         // Set up defaults for the options hash
         var options = this.options({
             position: 'top',

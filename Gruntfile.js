@@ -28,8 +28,12 @@ module.exports = function( grunt ) {
             tests: ['tmp']
         },
 
+        appConfig: {
+            def: 'STRING'
+        },
+
         // Configuration to be run (and then tested).
-        banner: {
+        usebanner: {
             bannerTop: {
                 options: {
                     position: 'top',
@@ -68,7 +72,7 @@ module.exports = function( grunt ) {
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
-    grunt.registerTask('test', ['clean', 'banner', 'nodeunit']);
+    grunt.registerTask('test', ['clean', 'usebanner', 'nodeunit']);
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['jshint', 'test']);
