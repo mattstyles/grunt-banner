@@ -24,20 +24,28 @@ var grunt = require('grunt');
 
 exports.banner = {
 
-    setUp : function( done ) {
+    setUp: function( done ) {
         // setup here if necessary
         done();
     },
 
-    tearDown : function( done ) {
+    tearDown: function( done ) {
         // tear down here if necessary
+        var filePath = 'test/fixtures/some.js';
+
+        // delete test file if it currently exists
+        if ( grunt.file.exists( filePath ) ) {
+            grunt.file.delete( filePath );
+        }
+
+        grunt.file.write( filePath, 'var variable = "this is a variable"' );
         done();
     },
 
-    bannerTop : function( test ) {
+    bannerTop: function( test ) {
         test.expect(1);
 
-        var actual = grunt.file.read( 'tmp/banner.js' );
+        var actual = grunt.file.read( 'test/fixtures/some.js' );
         var expected = grunt.file.read( 'test/expected/some-banner.js' );
 
         test.equal( actual, expected, 'should add a banner to the top of a file' );
