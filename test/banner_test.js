@@ -34,7 +34,7 @@ exports.banner = {
         done();
     },
 
-    addBanner : function() {
+    bannerTop : function( test ) {
         test.expect(1);
 
         var actual = grunt.file.read( 'tmp/banner.js' );
