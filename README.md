@@ -86,7 +86,7 @@ grunt.initConfig({
 
 `grunt-banner` simply adds the banner to the head or foot of the files that are specified by
 the array passed to `files.src`, it makes no attempt to see if a banner already exists and it
-is up to the user to ensure that the file should already contain a banner.  To this end it is
+is up to the user to ensure that the file should not already contain a banner.  To this end it is
 strongly recommended to use the [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean)
 task and only add banners to production-ready code.
 
@@ -94,4 +94,4 @@ task and only add banners to production-ready code.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-* 30.04.13 -- v0.1.0 -- Initial release of grunt-banner
+* 30.04.13 -- v0.1. -- Initial release of grunt-banner
