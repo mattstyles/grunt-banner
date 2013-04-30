@@ -8,7 +8,7 @@
 
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function( grunt ) {
 
     // Project configuration.
     grunt.initConfig({
@@ -32,10 +32,11 @@ module.exports = function(grunt) {
         banner: {
             bannerTop: {
                 options: {
-
+                    position: 'top',
+                    banner: '// the banner\n'
                 },
                 files: {
-                    'tmp/banner.js': [ 'test/fixtures/some.js' ]
+                    src: [ 'test/fixtures/some.js' ]
                 }
             }
         },

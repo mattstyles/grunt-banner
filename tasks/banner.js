@@ -10,41 +10,27 @@
 
 module.exports = function(grunt) {
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+    // Please see the Grunt documentation for more information regarding task
+    // creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerMultiTask('banner', 'Your task description goes here.', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      punctuation: '.',
-      separator: ', '
-    });
-
-    // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
+    grunt.registerMultiTask('banner', 'Adds a banner or a footer to a file', function() {
+        // Set up defaults for the options hash
+        var options = this.options({
+            position: 'top',
+            banner: ''
+        });
+        if ( options.position !== 'top' && options.position !== 'bottom' ) {
+            options.position = 'top';
         }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
 
-      // Handle options.
-      src += options.punctuation;
+        // Iterate over the list of files and add the banner or footer
+        this.files.forEach( function( file ) {
+            file.src.forEach( function( src ) {
+                console.log( options.banner );
+                grunt.file.write( src, options.banner + grunt.file.read( src ) );
+            });
+        });
 
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
     });
-  });
 
 };
