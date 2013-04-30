@@ -38,6 +38,16 @@ module.exports = function( grunt ) {
                 files: {
                     src: [ 'test/fixtures/some.js' ]
                 }
+            },
+
+            bannerBottom: {
+                options: {
+                    position: 'bottom',
+                    banner: '// the banner'
+                },
+                files: {
+                    src: [ 'test/fixtures/someBottom.js' ]
+                }
             }
         },
 
