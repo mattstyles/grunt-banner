@@ -94,4 +94,4 @@ task and only add banners to production-ready code.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-* 30.04.13 -- v0.1. -- Initial release of grunt-banner
+* 30.04.13 -- v0.1.0 -- Initial release of grunt-banner
