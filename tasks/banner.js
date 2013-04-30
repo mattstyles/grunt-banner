@@ -27,7 +27,9 @@ module.exports = function(grunt) {
         this.files.forEach( function( file ) {
             file.src.forEach( function( src ) {
                 console.log( options.banner );
-                grunt.file.write( src, options.banner + grunt.file.read( src ) );
+                grunt.file.write( src,
+                    options.position === 'top' ? options.banner + '\n' + grunt.file.read( src ) : grunt.file.read( src ) + '\n' + options.banner
+                );
             });
         });
 

@@ -38,6 +38,7 @@ exports.banner = {
             grunt.file.delete( filePath );
         }
 
+        // Write the post-test file
         grunt.file.write( filePath, 'var variable = "this is a variable"' );
         done();
     },

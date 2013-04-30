@@ -33,7 +33,7 @@ module.exports = function( grunt ) {
             bannerTop: {
                 options: {
                     position: 'top',
-                    banner: '// the banner\n'
+                    banner: '// the banner'
                 },
                 files: {
                     src: [ 'test/fixtures/some.js' ]
