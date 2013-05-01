@@ -11,13 +11,23 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 npm install grunt-banner --save-dev
 ```
 
-One the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
 grunt.loadNpmTasks('grunt-banner');
 ```
 
-## The "banner" task
+Or if you are using [matchdep](https://github.com/tkellen/node-matchdep) it will be included along with other
+`grunt-*` tasks by using this line of JS:
+
+```js
+require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+```
+
+## The "usebanner" task
+
+_grunt-banner renamed it’s task from `banner` to `usebanner` as a `banner` is often used to hold a banner template
+for a number of grunt plugins_
 
 ### Overview
 In your project's Gruntfile, add a section named `usebanner` to the data object passed into `grunt.initConfig()`.
@@ -30,7 +40,7 @@ grunt.initConfig({
     taskName: {
       options: {
         position: 'top' || 'bottom'
-        banner: '// banner text <%= templates allowed %>'
+        banner: '// banner text <%= templates encouraged %>'
       },
       files: {
         src: [ 'path/to/file.ext', 'path/to/another/*.ext' ]
@@ -57,8 +67,10 @@ The text to use as a banner.  Templated strings are perfectly acceptable and enc
 
 ### Usage Examples
 
-In this example an `appConfig` is read form a JSON file and used to populate a `banner` template which
-is then used by `grunt-banner` to place at the top of minified javascript and css files.
+In this example an `appConfig` is read from a JSON file and used to populate a `banner` template which
+is then used by `grunt-banner` to place at the top of some files.  Each file in the array will have the
+banner placed on to it and all `.js` files in the `/more-scripts/` folder will have a banner thanks to
+the `*` wildcard.
 
 ```js
 var appConfig = grunt.file.readJSON( 'app-config.json' ) || {};
