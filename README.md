@@ -1,4 +1,4 @@
-# grunt-banner
+# grunt-banner [![Build Status](https://travis-ci.org/mattstyles/grunt-banner.png?branch=master)](https://travis-ci.org/mattstyles/grunt-banner)
 
 > Adds a simple banner to files
 
@@ -106,4 +106,5 @@ task and only add banners to production-ready code.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 01.05.13 -- v0.1.3 -- Added travis
 * 30.04.13 -- v0.1.0 -- Initial release of grunt-banner
