@@ -32,9 +32,10 @@ module.exports = function(grunt) {
                     grunt.file.write( src,
                         options.position === 'top' ? options.banner + '\n' + grunt.file.read( src ) : grunt.file.read( src ) + '\n' + options.banner
                     );
-                }
 
-                grunt.log.writeln( 'Banner added to file ' + src.cyan );
+                	grunt.log.writeln( 'Banner added to file ' + src.cyan );
+                }
+                
             });
         });
 
