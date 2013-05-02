@@ -109,3 +109,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 * 01.05.03 -- v0.1.4 -- Fix for wildcard selector
 * 01.05.13 -- v0.1.3 -- Added travis
 * 30.04.13 -- v0.1.0 -- Initial release of grunt-banner
+
+---
+
+Task submitted by [Matt Styles](http://veryfizzyjelly.com/coding/introducing-grunt-booty) [@veryfizzyjelly](https://twitter.com/veryfizzyjelly)
