@@ -30,10 +30,10 @@ module.exports = function(grunt) {
                 if ( grunt.file.isFile( src ) ) {
 
                     grunt.file.write( src,
-                        options.position === 'top' ? options.banner + '\n' + grunt.file.read( src ) : grunt.file.read( src ) + '\n' + options.banner
+                        options.position === 'top' ? options.banner + grunt.util.linefeed + grunt.file.read( src ) : grunt.file.read( src ) + grunt.util.linefeed + options.banner
                     );
 
-                	grunt.log.writeln( 'Banner added to file ' + src.cyan );
+                	grunt.verbose.writeln( 'Banner added to file ' + src.cyan );
                 }
                 
             });
