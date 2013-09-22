@@ -43,5 +43,16 @@ exports.banner = {
         test.equal( actual, expected, 'should add a banner to the bottom of a file' );
 
         test.done();
+    },
+
+    bannerNoLineBreak: function ( test ) {
+        test.expect( 1 );
+
+        var actual = grunt.file.read( 'test/tmp/someNoLineBreak.js' );
+        var expected = grunt.file.read( 'test/expected/someNoLineBreak.js' );
+
+        test.equal( actual, expected, 'should add a banner without a linebreak' );
+
+        test.done();
     }
 };

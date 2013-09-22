@@ -61,7 +61,19 @@ module.exports = function( grunt ) {
                 files: {
                     src: [ 'test/tmp/someBottom.js' ]
                 }
+            },
+
+            bannerNoLineBreak: {
+                options: {
+                    banner: 'console.log("loaded"); ',
+                    linebreak: false
+                },
+                files: {
+                    src: [ 'test/tmp/someNoLineBreak.js' ]
+                }
             }
+
+
         },
 
         // Unit tests.
