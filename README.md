@@ -39,8 +39,9 @@ grunt.initConfig({
   usebanner: {
     taskName: {
       options: {
-        position: 'top' || 'bottom'
-        banner: '// banner text <%= templates encouraged %>'
+        position: 'top' || 'bottom',
+        banner: '// banner text <%= templates encouraged %>',
+        linebreak: true || false
       },
       files: {
         src: [ 'path/to/file.ext', 'path/to/another/*.ext' ]
@@ -64,6 +65,12 @@ Type: `String`
 Default value: ``
 
 The text to use as a banner.  Templated strings are perfectly acceptable and encouraged.
+
+#### options.linebreak
+Type: `Boolean`
+Befault value: `true`
+
+Set `linebreak` to true to add a line break between banner and file content.
 
 ### Usage Examples
 
