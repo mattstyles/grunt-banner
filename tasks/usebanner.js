@@ -36,7 +36,7 @@ module.exports = function(grunt) {
                         options.position === 'top' ? options.banner + linebreak + grunt.file.read( src ) : grunt.file.read( src ) + linebreak + options.banner
                     );
 
-                    grunt.log.writeln( 'Banner added to file ' + src.cyan );
+                	grunt.verbose.writeln( 'Banner added to file ' + src.cyan );
                 }
                 
             });
