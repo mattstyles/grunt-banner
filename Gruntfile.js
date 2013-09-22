@@ -25,7 +25,16 @@ module.exports = function( grunt ) {
 
         // Before generating any new files, remove any previously-created files.
         clean: {
-            tests: ['tmp']
+            tests: ['test/tmp']
+        },
+
+        copy: {
+            tests: {
+                expand: true,
+                cwd: 'test/fixtures/',
+                src: '**',
+                dest: 'test/tmp/'
+            }
         },
 
         appConfig: {
@@ -40,7 +49,7 @@ module.exports = function( grunt ) {
                     banner: '// the banner'
                 },
                 files: {
-                    src: [ 'test/fixtures/some.js' ]
+                    src: [ 'test/tmp/some.js' ]
                 }
             },
 
@@ -50,9 +59,21 @@ module.exports = function( grunt ) {
                     banner: '// the banner'
                 },
                 files: {
-                    src: [ 'test/fixtures/someBottom.js' ]
+                    src: [ 'test/tmp/someBottom.js' ]
+                }
+            },
+
+            bannerNoLineBreak: {
+                options: {
+                    banner: 'console.log("loaded"); ',
+                    linebreak: false
+                },
+                files: {
+                    src: [ 'test/tmp/someNoLineBreak.js' ]
                 }
             }
+
+
         },
 
         // Unit tests.
@@ -69,10 +90,11 @@ module.exports = function( grunt ) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
-    grunt.registerTask('test', ['clean', 'usebanner', 'nodeunit']);
+    grunt.registerTask('test', ['clean', 'copy', 'usebanner', 'nodeunit']);
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['jshint', 'test']);
