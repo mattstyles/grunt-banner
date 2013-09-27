@@ -1,7 +1,7 @@
 {
   "name": "grunt-banner",
   "description": "Adds a simple banner to files",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "homepage": "https://github.com/mattstyles/grunt-banner",
   "author": {
     "name": "Matt Styles",
