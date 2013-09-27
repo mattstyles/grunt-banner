@@ -17,11 +17,14 @@ module.exports = function(grunt) {
         // Set up defaults for the options hash
         var options = this.options({
             position: 'top',
-            banner: ''
+            banner: '',
+            linebreak: true,
         });
         if ( options.position !== 'top' && options.position !== 'bottom' ) {
             options.position = 'top';
         }
+
+        var linebreak = options.linebreak ? grunt.util.linefeed : '';
 
         // Iterate over the list of files and add the banner or footer
         this.files.forEach( function( file ) {
@@ -30,12 +33,12 @@ module.exports = function(grunt) {
                 if ( grunt.file.isFile( src ) ) {
 
                     grunt.file.write( src,
-                        options.position === 'top' ? options.banner + grunt.util.linefeed + grunt.file.read( src ) : grunt.file.read( src ) + grunt.util.linefeed + options.banner
+                        options.position === 'top' ? options.banner + linebreak + grunt.file.read( src ) : grunt.file.read( src ) + linebreak + options.banner
                     );
 
                 	grunt.verbose.writeln( 'Banner added to file ' + src.cyan );
                 }
-                
+
             });
         });
 
