@@ -90,7 +90,7 @@ grunt.initConfig({
   usebanner: {
     dist: {
       options: {
-        position: 'top'
+        position: 'top',
         banner: '<%= banner %>'
       },
       files: {
