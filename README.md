@@ -72,6 +72,11 @@ Befault value: `true`
 
 Set `linebreak` to true to add a line break between banner and file content.
 
+#### options.process
+Type: `Function`
+
+Allows the banner to be generated for each file using the output of the process function.
+
 ### Usage Examples
 
 In this example an `appConfig` is read from a JSON file and used to populate a `banner` template which

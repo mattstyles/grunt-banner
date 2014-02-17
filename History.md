@@ -1,5 +1,8 @@
 # Release History
 
+## 0.2.1 / 17-02-2014
+* Added processable banner creation function [pehrlich]
+
 ## 0.2.0 / 27-09-2013
 * Added options.linebreak [janslow]
 * Use grunt.utils.linefeed [evil-shrike]
