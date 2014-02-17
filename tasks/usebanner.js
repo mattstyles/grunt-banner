@@ -19,7 +19,9 @@ module.exports = function(grunt) {
             position: 'top',
             banner: '',
             linebreak: true,
+            process: false
         });
+
         if ( options.position !== 'top' && options.position !== 'bottom' ) {
             options.position = 'top';
         }
@@ -29,14 +31,17 @@ module.exports = function(grunt) {
         // Iterate over the list of files and add the banner or footer
         this.files.forEach( function( file ) {
             file.src.forEach( function( src ) {
-
                 if ( grunt.file.isFile( src ) ) {
+
+                    if ( typeof options.process === 'function' ) {
+                        options.banner = options.process( src );
+                    }
 
                     grunt.file.write( src,
                         options.position === 'top' ? options.banner + linebreak + grunt.file.read( src ) : grunt.file.read( src ) + linebreak + options.banner
                     );
 
-                	grunt.verbose.writeln( 'Banner added to file ' + src.cyan );
+                    grunt.verbose.writeln( 'Banner added to file ' + src.cyan );
                 }
 
             });

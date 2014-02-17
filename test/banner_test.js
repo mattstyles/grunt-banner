@@ -54,5 +54,16 @@ exports.banner = {
         test.equal( actual, expected, 'should add a banner without a linebreak' );
 
         test.done();
+    },
+
+    bannerProcess: function ( test ) {
+        test.expect( 1 );
+
+        var actual = grunt.file.read( 'test/tmp/someProcess.js' );
+        var expected = grunt.file.read( 'test/expected/someProcess.js' );
+
+        test.equal( actual, expected, 'should add a banner with a custom process task for creating the banner' );
+
+        test.done();
     }
 };

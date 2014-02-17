@@ -71,6 +71,21 @@ module.exports = function( grunt ) {
                 files: {
                     src: [ 'test/tmp/someNoLineBreak.js' ]
                 }
+            },
+
+            bannerProcess: {
+                options: {
+                    process: function( filepath ) {
+                        return grunt.template.process(
+                            '// banner for file: <%= filename %>',
+                            { data: {
+                                filename: filepath.match(/\/([^/]*)$/)[1]
+                        } } );
+                    }
+                },
+                files: {
+                    src: [ 'test/tmp/someProcess.js' ]
+                }
             }
 
 
