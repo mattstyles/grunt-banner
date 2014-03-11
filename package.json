@@ -23,6 +23,11 @@
   "scripts": {
     "test": "grunt test"
   },
+  "files": [
+    "tasks",
+    "History.md",
+    "LICENSE-MIT"
+  ],
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-cli": "~0.1.7",
