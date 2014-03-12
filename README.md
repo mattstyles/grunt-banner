@@ -68,7 +68,7 @@ The text to use as a banner.  Templated strings are perfectly acceptable and enc
 
 #### options.linebreak
 Type: `Boolean`
-Befault value: `true`
+Default value: `true`
 
 Set `linebreak` to true to add a line break between banner and file content.
 
