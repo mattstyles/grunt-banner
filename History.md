@@ -1,5 +1,8 @@
 # Release History
 
+## 0.2.2 / 13-03-2014
+* Update deps [XhmikosR]
+
 ## 0.2.1 / 17-02-2014
 * Added processable banner creation function [pehrlich]
 
