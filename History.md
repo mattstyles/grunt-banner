@@ -1,5 +1,8 @@
 # Release History
 
+## 0.2.3 / 27-05-2014
+* Use examples for process functions
+
 ## 0.2.2 / 13-03-2014
 * Update deps [XhmikosR]
 
