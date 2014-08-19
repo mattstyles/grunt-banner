@@ -86,10 +86,34 @@ module.exports = function( grunt ) {
                 files: {
                     src: [ 'test/tmp/someProcess.js' ]
                 }
+            },
+
+            bannerSourceMapsSass: {
+                options: {
+                    banner: '// The banner for a source map',
+                    position: 'top'
+                },
+                files: {
+                    src: [
+                        // 'test/tmp/styles.css'
+                    ]
+                }
             }
-
-
         },
+
+
+        sass: {
+            dist: {
+                options: {
+                    style: 'expanded',
+                    sourcemap: true
+                },
+                files: {
+                    'test/tmp/styles.css': 'test/tmp/styles.scss'
+                }
+            }
+        },
+
 
         // Unit tests.
         nodeunit: {
@@ -106,10 +130,11 @@ module.exports = function( grunt ) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
-    grunt.registerTask('test', ['clean', 'copy', 'usebanner', 'nodeunit']);
+    grunt.registerTask('test', ['clean', 'copy', 'sass', 'usebanner', 'nodeunit']);
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['jshint', 'test']);
