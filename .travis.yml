@@ -4,6 +4,5 @@ node_js:
 before_script:
   - npm install -g grunt-cli
 
-language: ruby
 before_install:
  - gem install sass
