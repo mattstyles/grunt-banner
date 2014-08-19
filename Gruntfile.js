@@ -107,16 +107,32 @@ module.exports = function ( grunt ) {
                 }
             },
 
-            bannerMatchPatternBottom: {
+            bannerSourceMapsSass: {
                 options: {
-                    position: 'bottom',
-                    banner: '// the banner',
-                    pattern: 'var variable'
+                    banner: '// The banner for a source map',
+                    position: 'top'
                 },
                 files: {
                     src: [
-                        'test/tmp/someMatchingPatternBottom.js'
+                        // 'test/tmp/styles.css'
                     ]
+                }
+            }
+        },
+
+        sass: {
+            dist: {
+                options: {
+                    lineNumbers: true,
+                    style: 'nested',
+                    quiet: true,
+                    loadPath: 'test/tmp/fixtures',
+                    banner: '/*\n' +
+                        '  <%= appConfig.def %>\n' +
+                        '*/'
+                },
+                files: {
+                    'test/tmp/styles.css': 'test/tmp/styles.scss'
                 }
             }
         },
@@ -133,10 +149,11 @@ module.exports = function ( grunt ) {
 
     require( 'load-grunt-tasks' )( grunt, { scope: 'devDependencies' } );
     require( 'time-grunt')( grunt );
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
     // Whenever the "test" task is run, first clean the "tmp" dir,
     // then run this plugin's task(s), then test the result.
-    grunt.registerTask( 'test', [ 'jshint', 'clean', 'copy', 'usebanner', 'nodeunit' ] );
+    grunt.registerTask( 'test', [ 'jshint', 'clean', 'copy', 'sass', 'usebanner', 'nodeunit' ] );
 
     // By default, lint and run all tests.
     grunt.registerTask( 'default', [ 'test' ] );
