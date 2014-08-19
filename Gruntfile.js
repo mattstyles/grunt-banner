@@ -90,12 +90,12 @@ module.exports = function( grunt ) {
 
             bannerSourceMapsSass: {
                 options: {
-                    banner: '// The banner for a source map',
+                    banner: '/*\n * The banner for a source map\n */\n',
                     position: 'top'
                 },
                 files: {
                     src: [
-                        // 'test/tmp/styles.css'
+                        'test/tmp/styles.css'
                     ]
                 }
             }
@@ -105,8 +105,8 @@ module.exports = function( grunt ) {
         sass: {
             dist: {
                 options: {
-                    style: 'expanded',
-                    sourcemap: true
+                    sourcemap: true,
+                    lineNumbers: true
                 },
                 files: {
                     'test/tmp/styles.css': 'test/tmp/styles.scss'
