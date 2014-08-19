@@ -114,7 +114,7 @@ module.exports = function ( grunt ) {
                 },
                 files: {
                     src: [
-                        'test/tmp/styles.css'
+                        // 'test/tmp/styles.css'
                     ]
                 }
             }
@@ -124,7 +124,13 @@ module.exports = function ( grunt ) {
             dist: {
                 options: {
                     sourcemap: true,
-                    lineNumbers: true
+                    lineNumbers: true,
+                    style: 'nested',
+                    quiet: true,
+                    loadPath: 'test/tmp/fixtures',
+                    banner: '/*\n' +
+                        '  <%= appConfig.def %>\n' +
+                        '*/'
                 },
                 files: {
                     'test/tmp/styles.css': 'test/tmp/styles.scss'
