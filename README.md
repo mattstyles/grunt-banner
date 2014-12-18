@@ -69,6 +69,12 @@ Default value: ``
 
 The text to use as a banner.  Templated strings are perfectly acceptable and encouraged.
 
+#### options.pattern
+Type: `String`
+
+Allows the banner to be added only if the supplied pattern matches. 
+
+
 #### options.linebreak
 Type: `Boolean`
 Default value: `true`

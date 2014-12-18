@@ -65,5 +65,29 @@ exports.banner = {
         test.equal( actual, expected, 'should add a banner with a custom process task for creating the banner' );
 
         test.done();
+    },
+
+    bannerMatchPatternTop: function( test ) {
+        test.expect( 3 );
+
+        var actualTop = grunt.file.read( 'test/tmp/someMatchingPatternTop.js' );
+        var expectedTop = grunt.file.read( 'test/expected/someMatchingPatternTop.js' );
+
+        test.equal( actualTop, expectedTop, 'should add a banner to the top of a file if matching pattern' );
+
+
+        var actualNoMatch = grunt.file.read( 'test/tmp/someNotMatchingPattern.js' );
+        var expectedNoMatch = grunt.file.read( 'test/expected/someNotMatchingPattern.js' );
+
+        test.equal( actualNoMatch, expectedNoMatch, 'should not add a banner to the top of a file if not matching pattern' );
+
+
+        var actualBottom = grunt.file.read( 'test/tmp/someMatchingPatternBottom.js' );
+        var expectedBottom = grunt.file.read( 'test/expected/someMatchingPatternBottom.js' );
+
+        test.equal( actualBottom, expectedBottom, 'should add a banner to the bottom of a file if matching pattern' );
+
+
+        test.done();
     }
 };

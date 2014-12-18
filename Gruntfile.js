@@ -86,9 +86,36 @@ module.exports = function( grunt ) {
                 files: {
                     src: [ 'test/tmp/someProcess.js' ]
                 }
+            },
+
+            bannerMatchPatternTop: {
+                options: {
+                    position: 'top',
+                    banner: '// the banner',
+                    pattern: 'var variable',
+                    linebreak: true
+
+                },
+                files: {
+                    src: [
+                        'test/tmp/someMatchingPatternTop.js',
+                        'test/tmp/someNotMatchingPattern.js'
+                    ]
+                }
+            },
+
+            bannerMatchPatternBottom: {
+                options: {
+                    position: 'bottom',
+                    banner: '// the banner',
+                    pattern: 'var variable'
+                },
+                files: {
+                    src: [
+                        'test/tmp/someMatchingPatternBottom.js'
+                    ]
+                }
             }
-
-
         },
 
         // Unit tests.
