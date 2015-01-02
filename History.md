@@ -1,5 +1,8 @@
 # Release History
 
+## 0.3.0 / 02-01-2015
+* Added support for conditional banners via pattern [eirikhm]
+
 ## 0.2.3 / 27-05-2014
 * Use examples for process functions
 
