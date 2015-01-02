@@ -1,0 +1,1 @@
+var otherVariable = "this is a variable";

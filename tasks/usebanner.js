@@ -26,6 +26,13 @@ module.exports = function(grunt) {
             options.position = 'top';
         }
 
+        var re = null;
+
+        if (options.pattern)
+        {
+            re = new RegExp(options.pattern);
+        }
+
         var linebreak = options.linebreak ? grunt.util.linefeed : '';
 
         // Iterate over the list of files and add the banner or footer
@@ -33,12 +40,19 @@ module.exports = function(grunt) {
             file.src.forEach( function( src ) {
                 if ( grunt.file.isFile( src ) ) {
 
+                    var fileContents = grunt.file.read( src );
+
+                    if (re && !re.test(fileContents))
+                    {
+                        return;
+                    }
+
                     if ( typeof options.process === 'function' ) {
                         options.banner = options.process( src );
                     }
 
                     grunt.file.write( src,
-                        options.position === 'top' ? options.banner + linebreak + grunt.file.read( src ) : grunt.file.read( src ) + linebreak + options.banner
+                        options.position === 'top' ? options.banner + linebreak + fileContents : fileContents + linebreak + options.banner
                     );
 
                     grunt.verbose.writeln( 'Banner added to file ' + src.cyan );
