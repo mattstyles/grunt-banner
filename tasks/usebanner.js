@@ -8,12 +8,12 @@
 
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function ( grunt ) {
 
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
-    grunt.registerMultiTask('usebanner', 'Adds a banner or a footer to a file', function() {
+    grunt.registerMultiTask( 'usebanner', 'Adds a banner or a footer to a file', function () {
         // Set up defaults for the options hash
         var options = this.options({
             position: 'top',
@@ -28,22 +28,20 @@ module.exports = function(grunt) {
 
         var re = null;
 
-        if (options.pattern)
-        {
+        if ( options.pattern ) {
             re = new RegExp(options.pattern);
         }
 
         var linebreak = options.linebreak ? grunt.util.linefeed : '';
 
         // Iterate over the list of files and add the banner or footer
-        this.files.forEach( function( file ) {
-            file.src.forEach( function( src ) {
+        this.files.forEach( function ( file ) {
+            file.src.forEach( function ( src ) {
                 if ( grunt.file.isFile( src ) ) {
 
                     var fileContents = grunt.file.read( src );
 
-                    if (re && !re.test(fileContents))
-                    {
+                    if ( re && !re.test(fileContents) ) {
                         return;
                     }
 
