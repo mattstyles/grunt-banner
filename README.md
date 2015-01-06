@@ -1,4 +1,9 @@
-# grunt-banner [![Build Status](https://travis-ci.org/mattstyles/grunt-banner.png?branch=master)](https://travis-ci.org/mattstyles/grunt-banner)
+# grunt-banner
+
+[![NPM version](https://img.shields.io/npm/v/grunt-banner.svg?style=flat)](https://www.npmjs.com/package/grunt-banner)
+[![Build Status](https://img.shields.io/travis/mattstyles/grunt-banner/master.svg?style=flat)](https://travis-ci.org/mattstyles/grunt-banner)
+[![peerDependency Status](https://img.shields.io/david/peer/mattstyles/grunt-banner.svg?style=flat)](https://david-dm.org/mattstyles/grunt-banner#info=peerDependencies)
+[![devDependency Status](https://img.shields.io/david/dev/mattstyles/grunt-banner.svg?style=flat)](https://david-dm.org/mattstyles/grunt-banner#info=devDependencies)
 
 > Adds a simple banner to files
 
@@ -72,7 +77,7 @@ The text to use as a banner.  Templated strings are perfectly acceptable and enc
 #### options.pattern
 Type: `String`
 
-Allows the banner to be added only if the supplied pattern matches. 
+Allows the banner to be added only if the supplied pattern matches.
 
 
 #### options.linebreak
