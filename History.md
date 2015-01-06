@@ -1,5 +1,8 @@
 # Release History
 
+## 0.3.1 / 06-01-2015
+* Update deps, style consistency, badges [XhmikosR]
+
 ## 0.3.0 / 02-01-2015
 * Added support for conditional banners via pattern [eirikhm]
 
