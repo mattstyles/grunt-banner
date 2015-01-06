@@ -1,6 +1,6 @@
 'use strict';
 
-var grunt = require('grunt');
+var grunt = require( 'grunt' );
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -23,7 +23,7 @@ var grunt = require('grunt');
     */
 
 exports.banner = {
-    bannerTop: function( test ) {
+    bannerTop: function ( test ) {
         test.expect( 1 );
 
         var actual = grunt.file.read( 'test/tmp/some.js' );
@@ -34,7 +34,7 @@ exports.banner = {
         test.done();
     },
 
-    bannerBottom: function( test ) {
+    bannerBottom: function ( test ) {
         test.expect( 1 );
 
         var actual = grunt.file.read( 'test/tmp/someBottom.js' );
@@ -67,7 +67,7 @@ exports.banner = {
         test.done();
     },
 
-    bannerMatchPatternTop: function( test ) {
+    bannerMatchPatternTop: function ( test ) {
         test.expect( 3 );
 
         var actualTop = grunt.file.read( 'test/tmp/someMatchingPatternTop.js' );

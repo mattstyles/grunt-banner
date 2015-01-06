@@ -8,7 +8,7 @@
 
 'use strict';
 
-module.exports = function( grunt ) {
+module.exports = function ( grunt ) {
 
     // Project configuration.
     grunt.initConfig({
@@ -75,12 +75,15 @@ module.exports = function( grunt ) {
 
             bannerProcess: {
                 options: {
-                    process: function( filepath ) {
+                    process: function ( filepath ) {
                         return grunt.template.process(
                             '// banner for file: <%= filename %>',
-                            { data: {
-                                filename: filepath.match(/\/([^/]*)$/)[1]
-                        } } );
+                            {
+                                data: {
+                                    filename: filepath.match(/\/([^/]*)$/)[1]
+                                }
+                            }
+                        );
                     }
                 },
                 files: {
