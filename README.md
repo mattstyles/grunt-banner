@@ -64,13 +64,12 @@ grunt.initConfig({
 #### options.position
 Type: `String`  
 Default: `'top`  
-Value range: `'top'` or `'bottom'` only
+Value range: `'top'` or `'bottom'`
 
 The position to place the banner - *either* the top or bottom (other values will default to top).
 
 #### options.banner
-Type: `String`  
-Default: ``  
+Type: `String`
 
 The text to use as a banner. Templated strings are perfectly acceptable and encouraged.
 
