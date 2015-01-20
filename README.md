@@ -63,7 +63,7 @@ grunt.initConfig({
 
 #### options.position
 Type: `String`  
-Default: `'top`  
+Default: `'top'`  
 Value range: `'top'` or `'bottom'`
 
 The position to place the banner - *either* the top or bottom (other values will default to top).
