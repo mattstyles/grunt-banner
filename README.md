@@ -130,7 +130,7 @@ usebanner: {
   dist: {
     options: {
       position: 'top',
-      process: function ( filepath )
+      process: function ( filepath ) {
         return grunt.template.process(
           '// banner for file: <%= filename %>',
           {
