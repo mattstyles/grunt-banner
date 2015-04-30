@@ -8,6 +8,8 @@
 
 'use strict';
 
+var chalk = require ( 'chalk' );
+
 module.exports = function ( grunt ) {
 
     // Please see the Grunt documentation for more information regarding task
@@ -41,7 +43,7 @@ module.exports = function ( grunt ) {
 
                     var fileContents = grunt.file.read( src );
 
-                    if ( re && !re.test(fileContents) ) {
+                    if ( re && !re.test( fileContents ) ) {
                         return;
                     }
 
@@ -50,16 +52,18 @@ module.exports = function ( grunt ) {
                     }
 
                     grunt.file.write( src,
-                        options.position === 'top' ? options.banner + linebreak + fileContents : fileContents + linebreak + options.banner
+                        options.position === 'top' ?
+                        options.banner + linebreak + fileContents :
+                        fileContents + linebreak + options.banner
                     );
 
-                    grunt.verbose.writeln( 'Banner added to file ' + src.cyan );
+                    grunt.verbose.writeln( 'Banner added to file ' + chalk.cyan( src ) );
                 }
 
             });
         });
 
-        grunt.log.writeln( '\u221A'.magenta + ' grunt-banner completed successfully' );
+        grunt.log.writeln( chalk.green( '\u221A' ) + ' grunt-banner completed successfully' );
 
     });
 
