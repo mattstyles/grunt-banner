@@ -23,9 +23,10 @@ module.exports = function ( grunt ) {
             }
         },
 
-        // Before generating any new files, remove any previously-created files.
+        // Before generating any new files,
+        // remove any previously-created files.
         clean: {
-            tests: ['test/tmp']
+            tests: [ 'test/tmp' ]
         },
 
         copy: {
@@ -77,8 +78,7 @@ module.exports = function ( grunt ) {
                 options: {
                     process: function ( filepath ) {
                         return grunt.template.process(
-                            '// banner for file: <%= filename %>',
-                            {
+                            '// banner for file: <%= filename %>', {
                                 data: {
                                     filename: filepath.match(/\/([^/]*)$/)[1]
                                 }
@@ -123,25 +123,22 @@ module.exports = function ( grunt ) {
 
         // Unit tests.
         nodeunit: {
-            tests: ['test/*_test.js']
+            tests: [ 'test/*_test.js' ]
         }
 
     });
 
     // Actually load this plugin's task(s).
-    grunt.loadTasks('tasks');
+    grunt.loadTasks( 'tasks' );
 
-    // These plugins provide necessary tasks.
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-nodeunit');
-    grunt.loadNpmTasks('grunt-contrib-copy');
+    require( 'load-grunt-tasks' )( grunt, { scope: 'devDependencies' } );
+    require( 'time-grunt')( grunt );
 
-    // Whenever the "test" task is run, first clean the "tmp" dir, then run this
-    // plugin's task(s), then test the result.
-    grunt.registerTask('test', ['jshint', 'clean', 'copy', 'usebanner', 'nodeunit']);
+    // Whenever the "test" task is run, first clean the "tmp" dir,
+    // then run this plugin's task(s), then test the result.
+    grunt.registerTask( 'test', [ 'jshint', 'clean', 'copy', 'usebanner', 'nodeunit' ] );
 
     // By default, lint and run all tests.
-    grunt.registerTask('default', ['test']);
+    grunt.registerTask( 'default', [ 'test' ] );
 
 };
