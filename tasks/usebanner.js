@@ -59,7 +59,7 @@ module.exports = function ( grunt ) {
             });
         });
 
-        grunt.log.writeln( '✔'.magenta + ' grunt-banner completed successfully' );
+        grunt.log.writeln( '\u221A'.magenta + ' grunt-banner completed successfully' );
 
     });
 
