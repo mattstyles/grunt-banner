@@ -133,8 +133,7 @@ usebanner: {
       position: 'top',
       process: function ( filepath ) {
         return grunt.template.process(
-          '// banner for file: <%= filename %>',
-          {
+          '// banner for file: <%= filename %>', {
             data: {
               filename: filepath.match(/\/([^/]*)$/)[1]
             }
