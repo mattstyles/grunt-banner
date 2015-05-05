@@ -2,7 +2,7 @@
  * grunt-banner
  * https://github.com/mattstyles/grunt-banner
  *
- * Copyright (c) 2014 Matt Styles
+ * Copyright (c) 2015 Matt Styles
  * Licensed under the MIT license.
  */
 

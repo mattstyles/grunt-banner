@@ -10,6 +10,7 @@
 
 
 ## Getting Started
+
 This plugin requires Grunt `>=0.4.0`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
@@ -151,10 +152,11 @@ usebanner: {
 
 ### Notes
 
-`grunt-banner` simply adds the banner to the head or foot of the files that are specified by the array passed to `files.src`, it makes no attempt to see if a banner already exists and it is up to the user to ensure that the file should not already contain a banner. To this end it is recommended to use the [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) task and only add banners to production-ready code.
+`grunt-banner` simply adds the banner to the head or foot of the files that are specified by the array passed to `files.src`, it makes no attempt to see if a banner already exists and it is up to the user to ensure that the file should not already contain a banner. To this end it is recommended to use the [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) task and only add banners to built code.
 
 
 ## Contributing
+
 In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ---

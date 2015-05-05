@@ -1,9 +1,13 @@
 {
   "name": "grunt-banner",
   "description": "Adds a simple banner to files",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "homepage": "https://github.com/mattstyles/grunt-banner",
-  "author": "Matt Styles <matt@veryfizzyjelly.com> (veryfizzyjelly.com)",
+  "author": {
+    "name": "Matt Styles",
+    "email": "matt@veryfizzyjelly.com",
+    "url": "https://github.com/mattstyles"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/mattstyles/grunt-banner.git"
@@ -44,6 +48,8 @@
     "grunt": ">=0.4.0"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "banner",
+    "build"
   ]
 }
