@@ -74,6 +74,16 @@ module.exports = function ( grunt ) {
                 }
             },
 
+            bannerLineBreak: {
+                options: {
+                    banner: '// Testing linebreak is true',
+                    linebreak: true
+                },
+                files: {
+                    src: [ 'test/tmp/lineBreakTrue.js' ]
+                }
+            },
+
             bannerProcess: {
                 options: {
                     process: function ( filepath ) {
