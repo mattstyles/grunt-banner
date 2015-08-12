@@ -1,5 +1,9 @@
 # Release History
 
+## 0.5.0 / 12-08-2015
+
+* Update deps
+
 ## 0.4.0 / 05-05-2015
 
 * Travis updates [XhmikosR]
