@@ -10,17 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/mattstyles/grunt-banner.git"
+    "url": "git+https://github.com/mattstyles/grunt-banner.git"
   },
   "bugs": {
     "url": "https://github.com/mattstyles/grunt-banner/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/mattstyles/grunt-banner/blob/master/LICENSE-MIT"
-    }
-  ],
+  "license": "MIT",
   "engines": {
     "node": ">=0.10.0"
   },
