@@ -64,16 +64,69 @@ grunt.initConfig({
 ### Options
 
 #### options.position
+
 Type: `String`  
 Default: `'top'`  
 Value range: `'top'` or `'bottom'` or `'replace'`
 
-The position to place the banner - *either* the top or bottom or in place of the contents in the desired file specified by `'replaceContent'`.
+The position to place the banner - *either* the top or bottom or in place of the contents in the desired file specified by `'replaceContent'` when and existing banner is replaced by `grunt-banner`.
 
-#### options.replaceContent
-Type: `String` or `RegExp`
+When ```position``` is set to `'replace'`, this *implies* ```options.replace: true``` unless that option has explicitly been set by the user already (see below).
 
-The text in the specified file that the banner should replace. Valid only when ```position``` is set to `'replace'`.
+When ```position``` is set to `'replace'` and replacement fails, i.e. no existing banner could be spotted, then `grunt-banner` falls back to regular ```position: 'top'``` | ```position: 'bottom'``` banner insertion behaviour.
+
+In short: `grunt-banner` will always either *replace* or *add* a banner!
+
+#### options.replace
+
+Type: `Boolean`, `String`, `RegExp` or `Function`
+
+The text in the specified file that the banner should replace. When ```position``` is set to `'replace'`, every occurrence of a banner (see below for more on how existing banners are located) will be replaced by the new one. When ```position``` is set to either `'top'` or `'bottom'`, then the existing banners will be removed and replaced by a single new banner at the top or bottom of the file as directed by the ```position``` setting.
+
+These ```options.replace``` parameter types / values are supported:
+
++ Boolean `false` (default) - do not look for existing banners; simply add the banner at the specified position (top / bottom).
+
++ Boolean `true` - 'smart' replace mode: use the built-in 'smart' locate-and-mark scanner to dig out the existing banners (more on the rules what maketh a banner below).
+
++ (string) - replace any part of the source code which matches this *implicit regex*. 
+
+  > This means most strings are matched as-is, but do not get mistaken about this: dot `.`, star `*` et al will not be the *literal characters* you might have expected, but are treated as regex operators! E.g. `replace: "/* blurb */"` will **not** work as if a literal string, since the stars `*` in there will make it match lines like `// blurb //` but **will not** match an actual C-style comment line `/* blurb */`. You will need to specify the proper regex string for that instead: `replace: "\/\* blurb \*\/"`.
+
+  > Also note that *every* regex match will be replaced by the specified banner. If your regex is not selective or precise enough, you may end up with some surprising replacements. **This is not a bug. You are responsible for providing *fitting* regexes to have `grunt-banner` match against.** 
+
++ (RegExp) - a rexexp instance to match against. The same caveats as the (string) type value above apply.
+
++ (function) - provide your own callback method to locate and mark the input. The interface for the callback function is:
+
+  ```
+  function (fileContents, newBanner, insertPositionMarker, src, options)
+  ```
+
+  which should *return* the marked `fileContents`, i.e. the `fileContents` with all banners eligible for replacement removed and replaced by a simple `insertPositionMarker` string (see below). Your locate-and-match callback may insert *one*, *multiple* markers or *none*: `grunt-banner` will check how many markers you injected and either replace them when one or more markers are seen, or when none are found, revert to its basic `top|bottom` position-based banner *insertion* process.
+
+  The callback function parameters:
+
+  + `fileContents` (string) - the contents of the `src` file.
+
+  + `newBanner` (string) - the new banner to be inserted by `grunt-banner`. 
+
+    > This (and the `options` parameter, see below) allows you to customize `grunt-banner` behaviour to an extreme degree, even providing your own custom *replacer* entirely: simply return your processed result with a single marker and reduce the `options.banner` to an empty string. But I digress...
+
+  + `insertPositionMarker` (string) - the insert marker. 
+
+    Currently this is the Unicode `REPLACEMENT CHARACTER` character, i.e. `\uFFFD`. We *assume* your original file content does not contain this marker already.
+
+  + `src` (string) - the path to the file being processed.
+
+  + `options` (object reference) - a *reference* to the current `options` object as used by `grunt-banner`. 
+
+    > This **is not** the same as the `options` object you provided through your `Gruntfile`; this is a reference to the updated/augmented clone of that original as used by `grunt-banner` internally.
+    >
+    > Though the following coding practice should be frowned upon as 'side effects' are generally undesirable, you *can* tweak the `options.banner` value to suit your custom needs, for example.
+
+    **Tread with great care when you are about to *edit* attributes in this `options` object reference! The fact that you *can* doesn't mean you *should* fiddle with it!**
+
 
 #### options.banner
 Type: `String`
@@ -95,6 +148,24 @@ Set `linebreak` to true to add a line break between banner and file content.
 Type: `Function`
 
 Allows the banner to be generated for each file using the output of the process function.
+
+
+
+
+### The ```options.replace: true``` default locate-and-mark functionality
+
+The default locate-and-mark process, invoked when you specify the `replace: true` option (or `position: "replace"` without any `replace:` value to go with that one) is set up to locate copyright banner comment chunks in either C or C++ style format, i.e. surrounded by `/*....*/` or single- or multiline `//` comment chunks.
+
+The process will inspect each comment chunk which start at the **left edge** (hence we ignore all *indented* comment chunks!) and which span *entire* lines, hence ruling out any comments which are leading or trailing source code statements *on the same line*.
+
+The last restriction placed on any 'old' banner to replace is that it **must** have the (case-**in**sensitive) word `Copyright` in there somewhere. And that word **must** be followed by a bit of non-whitespace blurb on the same line: generally a year, a name or both suffices to satisfy this last condition.
+
+Any such 'banner' block is marked for replacement in its entirety.
+
+> #### Warning Note:
+>
+> The replacer *does not* check if the *new* banner also includes the `Copyright` phrase, hence multiple applications of `grunt-banner` may lead to the later rounds of `grunt-banner` application *adding* the shiny new banner at the top (or bottom) of the source file.
+>
 
 
 ### Usage Examples
@@ -157,7 +228,9 @@ usebanner: {
 
 ### Notes
 
-`grunt-banner` simply adds the banner to the head or foot of the files that are specified by the array passed to `files.src`, it makes no attempt to see if a banner already exists and it is up to the user to ensure that the file should not already contain a banner. To this end it is recommended to use the [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) task and only add banners to built code.
+`grunt-banner` *adds* the banner to the head or foot of the files that are specified by the array passed to `files.src` unless ways to see if a banner already exists have been properly set up (```options.replace``` and/or ```position: 'replace'```).
+
+It is up to the user to ensure that either the file should not already contain a banner or that the configured locate-and-mark means (default locate-and-mark function, user-specified regex or user-specified callback function) are sufficient to ensure that no undesired code chunk replacements may occur. To this end it is recommended to use the [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) task and only add banners to built code.
 
 
 ## Contributing
