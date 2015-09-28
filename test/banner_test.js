@@ -45,6 +45,17 @@ exports.banner = {
         test.done();
     },
 
+    bannerReplace: function ( test ) {
+        test.expect( 1 );
+
+        var actual = grunt.file.read( 'test/tmp/someReplace.js' );
+        var expected = grunt.file.read( 'test/expected/someReplace.js' );
+
+        test.equal( actual, expected, 'should add a banner to replace content in the middle of a file' );
+
+        test.done();
+    },
+
     bannerNoLineBreak: function ( test ) {
         test.expect( 1 );
 

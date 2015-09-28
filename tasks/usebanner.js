@@ -24,8 +24,18 @@ module.exports = function ( grunt ) {
             process: false
         });
 
-        if ( options.position !== 'top' && options.position !== 'bottom' ) {
+        if ( options.position !== 'top' && options.position !== 'bottom' && options.position !== 'replace') {
             options.position = 'top';
+        }
+
+        // Verify that if user wishes to replace content with a banner, that they have correctly
+        // supplied the content they wish to replace.
+        if ( options.position === 'replace' ) {
+            if ( ! (('replaceContent' in options)) ) {
+                grunt.util.error('Detected option `replace` without accompanying option `replaceContent`.');
+            } else if ( typeof options.replaceContent !== 'string' || ! (options.replaceContent instanceof RegExp) ) {
+                grunt.util.error('Detected option `replaceContent` with invalid type - type must be String or RegExp.');
+            }
         }
 
         var re = null;
@@ -51,11 +61,19 @@ module.exports = function ( grunt ) {
                         options.banner = options.process( src );
                     }
 
-                    grunt.file.write( src,
-                        options.position === 'top' ?
-                        options.banner + linebreak + fileContents :
-                        fileContents + linebreak + options.banner
-                    );
+                    if ( options.position === 'replace' ) {
+                        if ( ! (options.replaceContent instanceof RegExp) ) {
+                            options.replaceContent = new RegExp(options.replaceContent);
+                        }
+                        fileContents = fileContents.replace(options.replaceContent, options.banner);
+                        grunt.file.write( src, fileContents );
+                    } else {
+                        grunt.file.write( src,
+                            options.position === 'top' ?
+                            options.banner + linebreak + fileContents :
+                            fileContents + linebreak + options.banner
+                        );
+                    }
 
                     grunt.verbose.writeln( 'Banner added to file ' + chalk.cyan( src ) );
                 }
