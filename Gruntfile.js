@@ -67,11 +67,88 @@ module.exports = function ( grunt ) {
             bannerReplace: {
                 options: {
                     position: 'replace',
-                    replaceContent: '// replace-this-comment',
+                    replace: '// replace-this-comment',
                     banner: '// the banner'
                 },
                 files: {
                     src: [ 'test/tmp/someReplace.js']
+                }
+            },
+
+            bannerReplaceMultiple: {
+                options: {
+                    position: 'replace',
+                    replace: '// replace-this-comment',
+                    banner: '// the banner'
+                },
+                files: {
+                    src: [ 'test/tmp/someReplaceMultiple.js']
+                }
+            },
+
+            bannerReplaceToTop: {
+                options: {
+                    position: 'top',
+                    replace: '// replace-this-comment',
+                    banner: '// the banner'
+                },
+                files: {
+                    src: [ 'test/tmp/someReplaceToTop.js']
+                }
+            },
+
+            bannerReplaceDefaultsToTop: {
+                options: {
+                    position: 'replace',
+                    replace: '// replace-this-comment',
+                    banner: '// the banner'
+                },
+                files: {
+                    src: [ 'test/tmp/someReplaceDefaultsToTop.js']
+                }
+            },
+
+            bannerReplaceSmart: {
+                options: {
+                    position: 'replace',
+                    replace: true,
+                    banner: '// the banner'
+                },
+                files: {
+                    src: 'test/tmp/someReplaceSmart.js'
+                }
+            },
+
+            bannerReplaceSmartMore: {
+                options: {
+                    position: 'replace',
+                    replace: '// replace-this-comment',
+                    banner: '// the banner'
+                },
+                files: {
+                    src: 'test/tmp/someMoreReplaceSmarts.js'
+                }
+            },
+
+            bannerReplaceSmartMore2: {
+                options: {
+                    position: 'replace',
+                    replace: true,
+                    banner: '// the banner'
+                },
+                files: {
+                    src: 'test/tmp/someMoreReplaceSmarts2.js'
+                }
+            },
+
+            bannerReplaceSmartToBottom: {
+                options: {
+                    position: 'bottom',
+                    replace: true,
+                    banner: '// the banner'
+                },
+                files: {
+                    src: [ 'test/tmp/someReplaceSmartToBottom.js']
                 }
             },
 
@@ -91,7 +168,7 @@ module.exports = function ( grunt ) {
                     linebreak: true
                 },
                 files: {
-                    src: [ 'test/tmp/lineBreakTrue.js' ]
+                    src: [ 'test/tmp/someLineBreakTrue.js' ]
                 }
             },
 
