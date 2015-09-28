@@ -30,7 +30,6 @@ module.exports = function ( grunt ) {
         var cpp_comment_re = /(^|\r\n|\n|\r)(?:\/\/[^\n\r]*(?:\r\n|\n|\r))*\/\/[^\n\r]*($|\r\n|\n|\r)/gi;
 
         function check_n_replace(match, p1, p2) {
-            console.warn("test: match: ", match, "\n p1: ", p1, "\n p2: ", p2, "\n p3: ", arguments, "\nregex match: ", copyright_re.exec(match));
             if (copyright_re.test(match)) {
                 // got one!
                 return p1 + insertPositionMarker + p2;
