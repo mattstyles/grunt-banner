@@ -89,11 +89,11 @@ These ```options.replace``` parameter types / values are supported:
 
 + Boolean `true` - 'smart' replace mode: use the built-in 'smart' locate-and-mark scanner to dig out the existing banners (more on the rules what maketh a banner below).
 
-+ (string) - replace any part of the source code which matches this *implicit regex*. 
++ (string) - replace any part of the source code which matches this *implicit regex*.
 
   > This means most strings are matched as-is, but do not get mistaken about this: dot `.`, star `*` et al will not be the *literal characters* you might have expected, but are treated as regex operators! E.g. `replace: "/* blurb */"` will **not** work as if a literal string, since the stars `*` in there will make it match lines like `// blurb //` but **will not** match an actual C-style comment line `/* blurb */`. You will need to specify the proper regex string for that instead: `replace: "\/\* blurb \*\/"`.
 
-  > Also note that *every* regex match will be replaced by the specified banner. If your regex is not selective or precise enough, you may end up with some surprising replacements. **This is not a bug. You are responsible for providing *fitting* regexes to have `grunt-banner` match against.** 
+  > Also note that *every* regex match will be replaced by the specified banner. If your regex is not selective or precise enough, you may end up with some surprising replacements. **This is not a bug. You are responsible for providing *fitting* regexes to have `grunt-banner` match against.**
 
 + (RegExp) - a rexexp instance to match against. The same caveats as the (string) type value above apply.
 
@@ -109,17 +109,17 @@ These ```options.replace``` parameter types / values are supported:
 
   + `fileContents` (string) - the contents of the `src` file.
 
-  + `newBanner` (string) - the new banner to be inserted by `grunt-banner`. 
+  + `newBanner` (string) - the new banner to be inserted by `grunt-banner`.
 
     > This (and the `options` parameter, see below) allows you to customize `grunt-banner` behaviour to an extreme degree, even providing your own custom *replacer* entirely: simply return your processed result with a single marker and reduce the `options.banner` to an empty string. But I digress...
 
-  + `insertPositionMarker` (string) - the insert marker. 
+  + `insertPositionMarker` (string) - the insert marker.
 
     Currently this is the Unicode `REPLACEMENT CHARACTER` character, i.e. `\uFFFD`. We *assume* your original file content does not contain this marker already.
 
   + `src` (string) - the path to the file being processed.
 
-  + `options` (object reference) - a *reference* to the current `options` object as used by `grunt-banner`. 
+  + `options` (object reference) - a *reference* to the current `options` object as used by `grunt-banner`.
 
     > This **is not** the same as the `options` object you provided through your `Gruntfile`; this is a reference to the updated/augmented clone of that original as used by `grunt-banner` internally.
     >
@@ -236,7 +236,3 @@ It is up to the user to ensure that either the file should not already contain a
 ## Contributing
 
 In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
-
----
-
-Task submitted by [Matt Styles](http://veryfizzyjelly.com/coding/introducing-grunt-booty) [@personalurban](https://twitter.com/personalurban)

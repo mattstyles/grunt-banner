@@ -1,5 +1,12 @@
 # Release History
 
+## 0.6.0 / 29-09-2015
+
+* _update_ docs [GerHobbelt] [scottyeck]
+* _update_ replace options [GerHobbelt]
+* _add_ replace [scottyeck]
+* _update_ node v4 testing
+
 ## 0.5.0 / 12-08-2015
 
 * Update deps
