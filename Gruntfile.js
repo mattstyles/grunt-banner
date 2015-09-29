@@ -64,6 +64,17 @@ module.exports = function ( grunt ) {
                 }
             },
 
+            bannerReplace: {
+                options: {
+                    position: 'replace',
+                    replaceContent: '// replace-this-comment',
+                    banner: '// the banner'
+                },
+                files: {
+                    src: [ 'test/tmp/someReplace.js']
+                }
+            },
+
             bannerNoLineBreak: {
                 options: {
                     banner: 'console.log("loaded"); ',

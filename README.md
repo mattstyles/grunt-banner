@@ -66,9 +66,14 @@ grunt.initConfig({
 #### options.position
 Type: `String`  
 Default: `'top'`  
-Value range: `'top'` or `'bottom'`
+Value range: `'top'` or `'bottom'` or `'replace'`
 
-The position to place the banner - *either* the top or bottom (other values will default to top).
+The position to place the banner - *either* the top or bottom or in place of the contents in the desired file specified by `'replaceContent'`.
+
+#### options.replaceContent
+Type: `String` or `RegExp`
+
+The text in the specified file that the banner should replace. Valid only when ```position``` is set to `'replace'`.
 
 #### options.banner
 Type: `String`
