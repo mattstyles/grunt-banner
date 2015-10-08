@@ -71,9 +71,9 @@ Value range: `'top'` or `'bottom'` or `'replace'`
 
 The position to place the banner - *either* the top or bottom or in place of the contents in the desired file specified by `'replaceContent'` when and existing banner is replaced by `grunt-banner`.
 
-When ```position``` is set to `'replace'`, this *implies* ```options.replace: true``` unless that option has explicitly been set by the user already (see below).
+When `position` is set to `'replace'`, this *implies* `options.replace: true` unless that option has explicitly been set by the user already (see below).
 
-When ```position``` is set to `'replace'` and replacement fails, i.e. no existing banner could be spotted, then `grunt-banner` falls back to regular ```position: 'top'``` | ```position: 'bottom'``` banner insertion behaviour.
+When `position` is set to `'replace'` and replacement fails, i.e. no existing banner could be spotted, then `grunt-banner` falls back to regular `position: 'top' | position: 'bottom'` banner insertion behaviour.
 
 In short: `grunt-banner` will always either *replace* or *add* a banner!
 
@@ -81,9 +81,9 @@ In short: `grunt-banner` will always either *replace* or *add* a banner!
 
 Type: `Boolean`, `String`, `RegExp` or `Function`
 
-The text in the specified file that the banner should replace. When ```position``` is set to `'replace'`, every occurrence of a banner (see below for more on how existing banners are located) will be replaced by the new one. When ```position``` is set to either `'top'` or `'bottom'`, then the existing banners will be removed and replaced by a single new banner at the top or bottom of the file as directed by the ```position``` setting.
+The text in the specified file that the banner should replace. When `position` is set to `'replace'`, every occurrence of a banner (see below for more on how existing banners are located) will be replaced by the new one. When `position` is set to either `'top'` or `'bottom'`, then the existing banners will be removed and replaced by a single new banner at the top or bottom of the file as directed by the `position` setting.
 
-These ```options.replace``` parameter types / values are supported:
+These `options.replace` parameter types / values are supported:
 
 + Boolean `false` (default) - do not look for existing banners; simply add the banner at the specified position (top / bottom).
 
@@ -152,7 +152,7 @@ Allows the banner to be generated for each file using the output of the process 
 
 
 
-### The ```options.replace: true``` default locate-and-mark functionality
+### The `options.replace: true` default locate-and-mark functionality
 
 The default locate-and-mark process, invoked when you specify the `replace: true` option (or `position: "replace"` without any `replace:` value to go with that one) is set up to locate copyright banner comment chunks in either C or C++ style format, i.e. surrounded by `/*....*/` or single- or multiline `//` comment chunks.
 
@@ -228,7 +228,7 @@ usebanner: {
 
 ### Notes
 
-`grunt-banner` *adds* the banner to the head or foot of the files that are specified by the array passed to `files.src` unless ways to see if a banner already exists have been properly set up (```options.replace``` and/or ```position: 'replace'```).
+`grunt-banner` *adds* the banner to the head or foot of the files that are specified by the array passed to `files.src` unless ways to see if a banner already exists have been properly set up (`options.replace` and/or `position: 'replace'`).
 
 It is up to the user to ensure that either the file should not already contain a banner or that the configured locate-and-mark means (default locate-and-mark function, user-specified regex or user-specified callback function) are sufficient to ensure that no undesired code chunk replacements may occur. To this end it is recommended to use the [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) task and only add banners to built code.
 
