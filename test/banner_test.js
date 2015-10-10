@@ -3,7 +3,7 @@
 var grunt = require( 'grunt' );
 
 // make sure the files are loaded in a platform-agnostic way: we don't care about their
-// line endings being CR, LF or CRLF: we all transform them to be UNIX LF-only. 
+// line endings being CR, LF or CRLF: we all transform them to be UNIX LF-only.
 function readFile( path ) {
     var content = grunt.file.read( path );
     return content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
