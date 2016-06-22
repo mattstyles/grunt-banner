@@ -7,10 +7,7 @@
 
 > Adds a simple banner to files
 
-
 ## Getting Started
-
-This plugin requires Grunt `>=0.4.0`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -30,11 +27,9 @@ Or if you are using [matchdep](https://github.com/tkellen/node-matchdep) it will
 require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 ```
 
-
 ## The "usebanner" task
 
 *grunt-banner renamed its task from `banner` to `usebanner` as a `banner` is often used to hold a banner template for a number of grunt plugins.*
-
 
 ### Overview
 
@@ -58,7 +53,6 @@ grunt.initConfig({
   }
 })
 ```
-
 
 ### Options
 
@@ -107,36 +101,37 @@ These `options.replace` parameter types / values are supported:
     Currently this is the Unicode `REPLACEMENT CHARACTER` character, i.e. `\uFFFD`. We *assume* your original file content does not contain this marker already.
   * `src` (string) - the path to the file being processed.
   * `options` (object reference) - a *reference* to the current `options` object as used by `grunt-banner`.
-    > This **is not** the same as the `options` object you provided through your `Gruntfile`; this is a reference to the updated/augmented clone of that original as used by `grunt-banner` internally.
-    >
-    > Though the following coding practice should be frowned upon as 'side effects' are generally undesirable, you *can* tweak the `options.banner` value to suit your custom needs, for example.
 
-    **Tread with great care when you are about to *edit* attributes in this `options` object reference! The fact that you *can* doesn't mean you *should* fiddle with it!**
+    This **is not** the same as the `options` object you provided through your `Gruntfile`; this is a reference to the updated/augmented clone of that original as used by `grunt-banner` internally.
 
+    Though the following coding practice should be frowned upon as 'side effects' are generally undesirable, you *can* tweak the `options.banner` value to suit your custom needs, for example.
+
+    **Treat with great care when you are about to *edit* attributes in this `options` object reference! The fact that you *can* doesn't mean you *should* fiddle with it!**
 
 #### options.banner
+
 Type: `String`
 
 The text to use as a banner. Templated strings are perfectly acceptable and encouraged.
 
 #### options.pattern
+
 Type: `String`
 
 Allows the banner to be added only if the supplied pattern matches.
 
 #### options.linebreak
+
 Type: `Boolean`  
 Default: `true`
 
 Set `linebreak` to true to add a line break between banner and file content.
 
 #### options.process
+
 Type: `Function`
 
 Allows the banner to be generated for each file using the output of the process function.
-
-
-
 
 ### The `options.replace: true` default locate-and-mark functionality
 
@@ -148,11 +143,9 @@ The last restriction placed on any 'old' banner to replace is that it **must** h
 
 Any such 'banner' block is marked for replacement in its entirety.
 
-> #### Warning Note:
->
-> The replacer *does not* check if the *new* banner also includes the `Copyright` phrase, hence multiple applications of `grunt-banner` may lead to the later rounds of `grunt-banner` application *adding* the shiny new banner at the top (or bottom) of the source file.
->
+#### Warning Note
 
+**The replacer *does not* check if the *new* banner also includes the `Copyright` phrase, hence multiple applications of `grunt-banner` may lead to the later rounds of `grunt-banner` application *adding* the shiny new banner at the top (or bottom) of the source file.**
 
 ### Usage Examples
 
@@ -182,7 +175,6 @@ grunt.initConfig({
 })
 ```
 
-
 #### Process Usage
 
 By supplying a process **function** you effectively take control of how the banner is generated, the task is still responsible for placing it. In essence, it replaces the need for a banner object being specified in your grunt config as you are creating it from code for each file. This gives you the flexibility to add file-specific data to your banners.
@@ -211,13 +203,11 @@ usebanner: {
 }
 ```
 
-
 ### Notes
 
 `grunt-banner` *adds* the banner to the head or foot of the files that are specified by the array passed to `files.src` unless ways to see if a banner already exists have been properly set up (`options.replace` and/or `position: 'replace'`).
 
 It is up to the user to ensure that either the file should not already contain a banner or that the configured locate-and-mark means (default locate-and-mark function, user-specified regex or user-specified callback function) are sufficient to ensure that no undesired code chunk replacements may occur. To this end it is recommended to use the [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) task and only add banners to built code.
-
 
 ## Contributing
 
